@@ -1,16 +1,15 @@
 import os
 from MainUI import *
 
-
-STORAGE_ROOT = "storage/orders"
+STORAGE_ROOT = "storage/reports"
 
 def clear_screen():
         """Clears the terminal screen."""
         os.system('cls' if os.name == 'nt' else 'clear')
 
-def create_work_order():
-    title = input("Title of Order: ")
-    desc = input("Description of Order: ")
+def create_maintenance_report():
+    title = input("Title of Report: ")
+    desc = input("Description of Report: ")
     for i in range(len(title)):
         if title[i] == " ":
             title[i] == "_"
@@ -19,16 +18,17 @@ def create_work_order():
     file.write(f"Title: {title}\n{desc}")
     file.close()
 
-def open_all_orders():
+def open_all_reports():
     for path, _, files in os.walk(STORAGE_ROOT):
         for name in files:
             fileName = os.path.join(path, name)
             with open(fileName, 'r') as files:
                 print(files.readline())
 
-def open_work_order():
-    open_all_orders()
-    search = input("Order to open: ")
+def open_maintenance_report():
+    open_all_reports()
+    search = input("Report to open: ")
+    clear_screen()
     for i in range(len(search)):
         if search[i] == " ":
             search[i] == "_"
@@ -39,25 +39,25 @@ def open_work_order():
     
     input("\nEnter to continue...")
 
-def work_orders_main():
+def maintenance_reports_main():
     while True:
         clear_screen()
-        print("=== Work Orders ===\n")
-        print("1. Create Work Order\n2. Print all Orders\n3. Open Work Order\n4. Go Back")
+        print("=== Maintenance reports ===\n")
+        print("1. Create Maintenance Report\n2. Print all Reports\n3. Open Maintenance Report\n4. Go Back")
         val = int(input("Enter: "))
         if val == 4:
             break
         elif val == 1:
             clear_screen()
-            create_work_order()
+            create_maintenance_report()
             clear_screen()
         elif val == 2:
             clear_screen()
-            open_all_orders()
+            open_all_reports()
             input("Press enter to go back...")
             clear_screen()
 
         elif val == 3:
             clear_screen()
-            open_work_order()
+            open_maintenance_report()
             clear_screen()

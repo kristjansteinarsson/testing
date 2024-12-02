@@ -2,6 +2,7 @@ import os
 from utils import *
 from Work_OrdersUI import *
 from StaffUI import *
+from ReportsUI import *
 
 ORDERS = "work-orders.json"
 
@@ -56,8 +57,6 @@ class NaNAirSystems:
                 print("Error: User or ID doesn't exist.")
                 input("\nPress Enter to return to the menu...")
 
-
-
     def superior_main(self):
         """Handles the superior workflow."""
         while self.running:
@@ -86,8 +85,10 @@ class NaNAirSystems:
                 staff_ui_main()
 
             elif val == 4:
-                # This function keeps giving the yellow bar error but it still works
                 work_orders_main()
+
+            elif val == 5:
+                maintenance_reports_main()
 
             else:
                 print("Feature not implemented yet.")
