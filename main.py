@@ -2,6 +2,7 @@ import os
 from utils import load_json_data
 
 STAFF_FILE = "staff.json"
+ORDERS = "work-orders.json"
 
 class NaNAirSystems:
     def __init__(self):
@@ -11,6 +12,7 @@ class NaNAirSystems:
     def clear_screen(self):
         """Clears the terminal screen."""
         os.system('cls' if os.name == 'nt' else 'clear')
+        
 
     def log_in(self):
         """Handles the login process."""
@@ -105,9 +107,11 @@ class NaNAirSystems:
                 for user in staff:
                     print(f"Name: {user['name']} | ID: {user['id']} | Role: {user['role']}")
                 input("\nPress Enter to return...")
+
             else:
                 print("Feature not implemented yet.")
                 input("\nPress Enter to continue...")
+
 
 if __name__ == "__main__":
     system = NaNAirSystems()
