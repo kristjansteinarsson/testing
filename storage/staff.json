@@ -1,5 +1,17 @@
 [
-    {"id": 1234, "name": "Alice", "role": "Superior"},
-    {"id": 2345, "name": "Bob", "role": "Employee"},
-    {"id": 6969, "name": "Chuck Norris", "role": "Superior"}
+    {
+        "id": 1234,
+        "name": "Alice",
+        "role": "Superior"
+    },
+    {
+        "id": 2345,
+        "name": "Bob",
+        "role": "Employee"
+    },
+    {
+        "id": 6969,
+        "name": "Chuck Norris",
+        "role": "Superior"
+    }
 ]

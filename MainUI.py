@@ -1,7 +1,8 @@
 import os
-from utils import load_json_data
+from utils import *
+from Work_OrdersUI import *
+from StaffUI import *
 
-STAFF_FILE = "staff.json"
 ORDERS = "work-orders.json"
 
 class NaNAirSystems:
@@ -12,14 +13,13 @@ class NaNAirSystems:
     def clear_screen(self):
         """Clears the terminal screen."""
         os.system('cls' if os.name == 'nt' else 'clear')
-        
 
     def log_in(self):
         """Handles the login process."""
         while self.running:
             self.clear_screen()
             print("=== Welcome to NaN Air Systems ===")
-            print("1. Log in\n2. Quit")
+            print("\n1. Log in\n2. Quit\n")
             try:
                 val = int(input("Enter: "))
             except ValueError:
@@ -34,7 +34,7 @@ class NaNAirSystems:
 
             self.clear_screen()
             print("=== Log In ===")
-            username = input("Name: ").strip()
+            username = input("\nName: ").strip()
             try:
                 user_id = int(input("ID: "))
             except ValueError:
@@ -56,25 +56,7 @@ class NaNAirSystems:
                 print("Error: User or ID doesn't exist.")
                 input("\nPress Enter to return to the menu...")
 
-    def employee_main(self):
-        """Handles the employee workflow."""
-        while self.running:
-            self.clear_screen()
-            print(f"=== Welcome {self.user['name']} | Employee ===")
-            print("1. Log Out")
-            try:
-                val = int(input("Enter: "))
-            except ValueError:
-                print("Error: Please enter a number.")
-                input("\nPress Enter to continue...")
-                continue
 
-            if val == 1:
-                self.user = None
-                break
-            else:
-                print("Invalid option. Try again.")
-                input("\nPress Enter to continue...")
 
     def superior_main(self):
         """Handles the superior workflow."""
@@ -101,17 +83,35 @@ class NaNAirSystems:
                 break
 
             elif val == 2:
-                staff = load_json_data(STAFF_FILE)
-                self.clear_screen()
-                print("=== All Employees / Users ===")
-                for user in staff:
-                    print(f"Name: {user['name']} | ID: {user['id']} | Role: {user['role']}")
-                input("\nPress Enter to return...")
+                staff_ui_main()
+
+            elif val == 4:
+                # This function keeps giving the yellow bar error but it still works
+                work_orders_main()
 
             else:
                 print("Feature not implemented yet.")
                 input("\nPress Enter to continue...")
 
+    # def employee_main(self):
+    #     """Handles the employee workflow."""
+    #     while self.running:
+    #         self.clear_screen()
+    #         print(f"=== Welcome {self.user['name']} | Employee ===")
+    #         print("1. Log Out")
+    #         try:
+    #             val = int(input("Enter: "))
+    #         except ValueError:
+    #             print("Error: Please enter a number.")
+    #             input("\nPress Enter to continue...")
+    #             continue
+
+    #         if val == 1:
+    #             self.user = None
+    #             break
+    #         else:
+    #             print("Invalid option. Try again.")
+    #             input("\nPress Enter to continue...")
 
 if __name__ == "__main__":
     system = NaNAirSystems()
