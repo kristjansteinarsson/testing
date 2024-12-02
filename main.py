@@ -5,8 +5,8 @@ STAFF_FILE = "staff.json"
 
 class NaNAirSystems:
     def __init__(self):
-        self.user = None  # Store the logged-in user's data
-        self.running = True  # Controls whether the application runs
+        self.user = None
+        self.running = True
 
     def clear_screen(self):
         """Clears the terminal screen."""
@@ -44,12 +44,12 @@ class NaNAirSystems:
 
             for user in staff:
                 if user['name'] == username and user['id'] == user_id:
-                    self.user = user  # Save the logged-in user
+                    self.user = user
                     if user['role'].lower() == 'superior':
                         self.superior_main()
                     else:
                         self.employee_main()
-                    break  # Return to login menu after session ends
+                    break
             else:
                 print("Error: User or ID doesn't exist.")
                 input("\nPress Enter to return to the menu...")
@@ -68,8 +68,8 @@ class NaNAirSystems:
                 continue
 
             if val == 1:
-                self.user = None  # Log out the user
-                break  # Return to the login menu
+                self.user = None
+                break
             else:
                 print("Invalid option. Try again.")
                 input("\nPress Enter to continue...")
@@ -95,8 +95,8 @@ class NaNAirSystems:
                 continue
 
             if val == 6:
-                self.user = None  # Log out the user
-                break  # Return to the login menu
+                self.user = None
+                break
 
             elif val == 2:
                 staff = load_json_data(STAFF_FILE)
@@ -109,7 +109,6 @@ class NaNAirSystems:
                 print("Feature not implemented yet.")
                 input("\nPress Enter to continue...")
 
-# Program entry point
 if __name__ == "__main__":
     system = NaNAirSystems()
     system.log_in()
