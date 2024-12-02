@@ -17,7 +17,13 @@ def load_all_users():
     print()
 
 def inspect_user():
-    pass
+    clear_screen()
+    search = input("\nSearch for User: ")
+    staff = load_json_data(STAFF_FILE)
+    for user in staff:
+        if search == user['name']:
+            print(f"Name: {user['name']} | ID: {user['id']} | Role: {user['role']}")
+    input("\nPress enter to go back...")
 
 def create_user():
     load_all_users()
@@ -51,6 +57,6 @@ def staff_ui_main():
         if val == 3:
             break
         elif val == 1:
-            pass
+            inspect_user()
         elif val == 2:
             create_user()
