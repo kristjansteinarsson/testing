@@ -48,15 +48,48 @@ def create_user():
     staff.append(new_user)
     save_user(STAFF_FILE, staff)
 
+def delete_user():
+    clear_screen()
+    staff = load_json_data(STAFF_FILE)
+
+    print("USERS:\n")
+    for user in staff:
+        print(f"Name: {user['name']} | ID: {user['id']} | Role: {user['role']}")
+    print()
+
+    name = input("Name of User to delete: ")
+    user_to_delete = None
+    for user in staff:
+        if name == user['name']:
+            user_to_delete = user
+            break
+
+    clear_screen()
+
+    if user_to_delete:
+        print(f"Name: {user_to_delete['name']} | ID: {user_to_delete['id']} | Role: {user_to_delete['role']}")
+        sure = input("\nAre you sure you want to delete this user? (Y/N): ")
+        if sure == "Y":
+            staff.remove(user_to_delete)
+            save_user(STAFF_FILE, staff)
+            print("User deleted")
+        else:
+            print("Operation canceled.")
+    else:
+        print("No user found with that name.")
+    input("\nPress enter to go back...")
+
 def staff_ui_main():
     while True:
         load_all_users()
         print("=== Employees / Users ===")
-        print("\n1. Inspect User\n2. Create User\n3. Go Back\n")
+        print("\n1. Inspect User\n2. Create User\n3. Delete User\n4. Go Back\n")
         val = int(input("Enter: "))
-        if val == 3:
+        if val == 4:
             break
         elif val == 1:
             inspect_user()
         elif val == 2:
             create_user()
+        elif val == 3:
+            delete_user()
