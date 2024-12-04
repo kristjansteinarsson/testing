@@ -48,6 +48,19 @@ def create_user():
     staff.append(new_user)
     save_user(STAFF_FILE, staff)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 def delete_user():
     clear_screen()
     staff = load_json_data(STAFF_FILE)
