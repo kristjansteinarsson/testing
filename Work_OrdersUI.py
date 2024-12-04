@@ -32,20 +32,31 @@ def open_work_order():
     for i in range(len(search)):
         if search[i] == " ":
             search[i] == "_"
-    with open (f"{STORAGE_ROOT}/{search.lower()}.txt", 'r') as file:
+    with open(f"{STORAGE_ROOT}/{search.lower()}.txt", 'r') as file:
         read = file.readlines()
         for line in read:
             print(line)
     
     input("\nEnter to continue...")
 
+def delete_work_order():
+    open_all_orders()
+    search = input("Order to Delete: ")
+    for i in range(len(search)):
+        if search[i] == " ":
+            search[i] == "_"
+    file = f"{STORAGE_ROOT}/{search.lower()}.txt"
+    delete = input("Are you sure? Y/N: ")
+    if delete == "Y":
+        os.remove(file)
+
 def work_orders_main():
     while True:
         clear_screen()
         print("=== Work Orders ===\n")
-        print("1. Create Work Order\n2. Print all Orders\n3. Open Work Order\n4. Go Back")
+        print("1. Create Work Order\n2. Print all Orders\n3. Open Work Order\n4. Delete Order\n5. Go Back")
         val = int(input("Enter: "))
-        if val == 4:
+        if val == 5:
             break
         elif val == 1:
             clear_screen()
@@ -60,4 +71,9 @@ def work_orders_main():
         elif val == 3:
             clear_screen()
             open_work_order()
+            clear_screen()
+
+        elif val == 4:
+            clear_screen()
+            delete_work_order()
             clear_screen()

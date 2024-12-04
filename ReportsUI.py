@@ -39,6 +39,18 @@ def open_maintenance_report():
     
     input("\nEnter to continue...")
 
+def delete_maintenance_report():
+    open_all_reports()
+    search = input("Report to open: ")
+    clear_screen()
+    for i in range(len(search)):
+        if search[i] == " ":
+            search[i] == "_"
+    file = f"{STORAGE_ROOT}/{search.lower()}.txt"
+    delete = input("Are you sure? Y/N: ")
+    if delete == "Y":
+        os.remove(file)
+
 def maintenance_reports_main():
     while True:
         clear_screen()
